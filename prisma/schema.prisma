@@ -54,6 +54,7 @@ model Tenant {
   routes       Route[]
   trips        Trip[]
   reservations Reservation[]
+  expenses     Expense[]
 
   @@map("tenants")
 }
@@ -74,6 +75,7 @@ model User {
 
   driverTrips  Trip[]        @relation("DriverTrips")
   reservations Reservation[]
+  expenses     Expense[]
 
   @@unique([tenantId, email])
   @@map("users")
@@ -135,6 +137,7 @@ model Trip {
   driver  User    @relation("DriverTrips", fields: [driverId], references: [id])
 
   reservations Reservation[]
+  expenses     Expense[]
 
   @@map("trips")
 }
@@ -153,9 +156,28 @@ model Reservation {
   updatedAt     DateTime          @updatedAt
   deletedAt     DateTime?
 
-  tenant    Tenant @relation(fields: [tenantId], references: [id])
+  tenant Tenant @relation(fields: [tenantId], references: [id])
   trip      Trip   @relation(fields: [tripId], references: [id])
   passenger User   @relation(fields: [passengerId], references: [id])
 
   @@map("reservations")
+}
+
+model Expense {
+  id          String    @id @default(uuid())
+  tenantId    String
+  tripId      String
+  driverId    String
+  amount      Decimal   @map("amount")
+  description String
+  category    String    @default("OTHER") // e.g., TOLL, FUEL, OTHER
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  trip   Trip   @relation(fields: [tripId], references: [id])
+  driver User   @relation(fields: [driverId], references: [id])
+
+  @@map("expenses")
 }

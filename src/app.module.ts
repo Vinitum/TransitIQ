@@ -8,9 +8,11 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { TripsModule } from './trips/trips.module';
 import { AiModule } from './ai/ai.module';
+import { DriverOpsModule } from './driver-ops/driver-ops.module';
+import { BookingModule } from './booking/booking.module';
 
 @Module({
-  imports: [CommonModule, VehiclesModule, UsersModule, RoutesModule, SharedModule, TripsModule, AiModule],
+  imports: [CommonModule, VehiclesModule, UsersModule, RoutesModule, SharedModule, TripsModule, AiModule, DriverOpsModule, BookingModule],
   controllers: [AppController],
   providers: [AppService],
 })
