@@ -23,23 +23,23 @@ let VehiclesController = class VehiclesController {
         this.vehiclesService = vehiclesService;
     }
     create(req, createVehicleDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.vehiclesService.create(tenantId, createVehicleDto);
     }
     findAll(req) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.vehiclesService.findAll(tenantId);
     }
     findOne(req, id) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.vehiclesService.findOne(tenantId, id);
     }
     update(req, id, updateVehicleDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.vehiclesService.update(tenantId, id, updateVehicleDto);
     }
     remove(req, id) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.vehiclesService.remove(tenantId, id);
     }
 };

@@ -10,8 +10,8 @@ export declare class AiController {
         currency: string;
         reasoning: string;
         metadata: {
-            distance: any;
-            consumption: any;
+            distance: number;
+            consumption: number;
             fuelCostEstimate: number;
         };
     }>;

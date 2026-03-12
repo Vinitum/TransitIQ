@@ -23,23 +23,23 @@ let DriverOpsController = class DriverOpsController {
         this.driverOpsService = driverOpsService;
     }
     getTodayTrips(req) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
-        const driverId = req.user?.id || 'dummy-driver-id';
+        const tenantId = req.user.tenantId;
+        const driverId = req.user.id;
         return this.driverOpsService.getTodayTrips(tenantId, driverId);
     }
     updateTripStatus(req, tripId, updateTripStatusDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
-        const driverId = req.user?.id || 'dummy-driver-id';
+        const tenantId = req.user.tenantId;
+        const driverId = req.user.id;
         return this.driverOpsService.updateTripStatus(tenantId, driverId, tripId, updateTripStatusDto);
     }
     logLocation(req, tripId, locationDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
-        const driverId = req.user?.id || 'dummy-driver-id';
+        const tenantId = req.user.tenantId;
+        const driverId = req.user.id;
         return this.driverOpsService.logLocation(tenantId, driverId, tripId, locationDto);
     }
     createExpense(req, tripId, createExpenseDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
-        const driverId = req.user?.id || 'dummy-driver-id';
+        const tenantId = req.user.tenantId;
+        const driverId = req.user.id;
         return this.driverOpsService.createExpense(tenantId, driverId, tripId, createExpenseDto);
     }
 };

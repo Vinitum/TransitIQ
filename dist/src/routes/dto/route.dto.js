@@ -54,30 +54,29 @@ class UpdateRouteDto {
 exports.UpdateRouteDto = UpdateRouteDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_2.IsOptional)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateRouteDto.prototype, "title", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_2.IsOptional)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateRouteDto.prototype, "startLocation", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_2.IsOptional)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateRouteDto.prototype, "endLocation", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_2.IsOptional)(),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], UpdateRouteDto.prototype, "basePrice", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_2.IsOptional)(),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.Min)(0),
     __metadata("design:type", Number)
 ], UpdateRouteDto.prototype, "taxRate", void 0);
-const class_validator_2 = require("class-validator");
 //# sourceMappingURL=route.dto.js.map

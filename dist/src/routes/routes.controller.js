@@ -23,23 +23,23 @@ let RoutesController = class RoutesController {
         this.routesService = routesService;
     }
     create(req, createRouteDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.routesService.create(tenantId, createRouteDto);
     }
     findAll(req) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.routesService.findAll(tenantId);
     }
     findOne(req, id) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.routesService.findOne(tenantId, id);
     }
     update(req, id, updateRouteDto) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.routesService.update(tenantId, id, updateRouteDto);
     }
     remove(req, id) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.routesService.remove(tenantId, id);
     }
 };

@@ -61,7 +61,7 @@ let BookingService = class BookingService {
         const { tenantId, tripId, passengerId, seatNumber } = createDto;
         const trip = await this.prisma.trip.findFirst({
             where: { id: tripId, tenantId, deletedAt: null },
-            include: { vehicle: true },
+            include: { vehicle: true, route: true },
         });
         if (!trip) {
             throw new common_1.NotFoundException('Trip not found');

@@ -39,9 +39,7 @@ __decorate([
     __metadata("design:type", String)
 ], SearchTripsDto.prototype, "date", void 0);
 class CreateReservationDto {
-    tenantId;
     tripId;
-    passengerId;
     seatNumber;
 }
 exports.CreateReservationDto = CreateReservationDto;
@@ -49,17 +47,7 @@ __decorate([
     (0, class_validator_1.IsUUID)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateReservationDto.prototype, "tenantId", void 0);
-__decorate([
-    (0, class_validator_1.IsUUID)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
 ], CreateReservationDto.prototype, "tripId", void 0);
-__decorate([
-    (0, class_validator_1.IsUUID)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateReservationDto.prototype, "passengerId", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
     (0, class_validator_1.Min)(1),

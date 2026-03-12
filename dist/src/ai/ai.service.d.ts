@@ -12,8 +12,8 @@ export declare class AiService {
         currency: string;
         reasoning: string;
         metadata: {
-            distance: any;
-            consumption: any;
+            distance: number;
+            consumption: number;
             fuelCostEstimate: number;
         };
     }>;

@@ -22,11 +22,11 @@ let AiController = class AiController {
         this.aiService = aiService;
     }
     async suggestPrice(req, body) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.aiService.suggestTicketPrice(tenantId, body.routeId, body.vehicleId);
     }
     async optimizeRoute(req, tripId) {
-        const tenantId = req.user?.tenantId || 'dummy-tenant-id';
+        const tenantId = req.user.tenantId;
         return this.aiService.optimizeRouteForPickups(tenantId, tripId);
     }
 };

@@ -19,12 +19,28 @@ const trips_module_1 = require("./trips/trips.module");
 const ai_module_1 = require("./ai/ai.module");
 const driver_ops_module_1 = require("./driver-ops/driver-ops.module");
 const booking_module_1 = require("./booking/booking.module");
+const config_1 = require("@nestjs/config");
+const mock_auth_middleware_1 = require("./common/middleware/mock-auth.middleware");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer.apply(mock_auth_middleware_1.MockAuthMiddleware).forRoutes('*');
+    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [common_module_1.CommonModule, vehicles_module_1.VehiclesModule, users_module_1.UsersModule, routes_module_1.RoutesModule, shared_module_1.SharedModule, trips_module_1.TripsModule, ai_module_1.AiModule, driver_ops_module_1.DriverOpsModule, booking_module_1.BookingModule],
+        imports: [
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            common_module_1.CommonModule,
+            vehicles_module_1.VehiclesModule,
+            users_module_1.UsersModule,
+            routes_module_1.RoutesModule,
+            shared_module_1.SharedModule,
+            trips_module_1.TripsModule,
+            ai_module_1.AiModule,
+            driver_ops_module_1.DriverOpsModule,
+            booking_module_1.BookingModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

@@ -25,10 +25,17 @@ let BookingController = class BookingController {
     search(searchDto) {
         return this.bookingService.searchTrips(searchDto);
     }
-    createReservation(createDto) {
-        return this.bookingService.createReservation(createDto);
+    createReservation(req, createDto) {
+        const tenantId = req.user.tenantId;
+        const passengerId = req.user.id;
+        return this.bookingService.createReservation({
+            ...createDto,
+            tenantId,
+            passengerId,
+        });
     }
-    pay(id, tenantId) {
+    pay(req, id) {
+        const tenantId = req.user.tenantId;
         return this.bookingService.payReservation(tenantId, id);
     }
 };
@@ -42,17 +49,18 @@ __decorate([
 ], BookingController.prototype, "search", null);
 __decorate([
     (0, common_1.Post)('reservations'),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [booking_dto_1.CreateReservationDto]),
+    __metadata("design:paramtypes", [Object, booking_dto_1.CreateReservationDto]),
     __metadata("design:returntype", void 0)
 ], BookingController.prototype, "createReservation", null);
 __decorate([
     (0, common_1.Post)('reservations/:id/pay'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)('tenantId')),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [Object, String]),
     __metadata("design:returntype", void 0)
 ], BookingController.prototype, "pay", null);
 exports.BookingController = BookingController = __decorate([
