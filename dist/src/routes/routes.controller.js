@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const routes_service_1 = require("./routes.service");
 const route_dto_1 = require("./dto/route.dto");
 const swagger_1 = require("@nestjs/swagger");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let RoutesController = class RoutesController {
     routesService;
     constructor(routesService) {
@@ -86,6 +87,8 @@ __decorate([
 ], RoutesController.prototype, "remove", null);
 exports.RoutesController = RoutesController = __decorate([
     (0, swagger_1.ApiTags)('Routes'),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)('routes'),
     __metadata("design:paramtypes", [routes_service_1.RoutesService])
 ], RoutesController);

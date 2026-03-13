@@ -19,18 +19,16 @@ const trips_module_1 = require("./trips/trips.module");
 const ai_module_1 = require("./ai/ai.module");
 const driver_ops_module_1 = require("./driver-ops/driver-ops.module");
 const booking_module_1 = require("./booking/booking.module");
+const auth_module_1 = require("./auth/auth.module");
 const config_1 = require("@nestjs/config");
-const mock_auth_middleware_1 = require("./common/middleware/mock-auth.middleware");
 let AppModule = class AppModule {
-    configure(consumer) {
-        consumer.apply(mock_auth_middleware_1.MockAuthMiddleware).forRoutes('*');
-    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
+            auth_module_1.AuthModule,
             common_module_1.CommonModule,
             vehicles_module_1.VehiclesModule,
             users_module_1.UsersModule,

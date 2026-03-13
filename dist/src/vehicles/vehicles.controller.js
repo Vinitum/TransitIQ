@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const vehicles_service_1 = require("./vehicles.service");
 const vehicle_dto_1 = require("./dto/vehicle.dto");
 const swagger_1 = require("@nestjs/swagger");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let VehiclesController = class VehiclesController {
     vehiclesService;
     constructor(vehiclesService) {
@@ -86,6 +87,8 @@ __decorate([
 ], VehiclesController.prototype, "remove", null);
 exports.VehiclesController = VehiclesController = __decorate([
     (0, swagger_1.ApiTags)('Vehicles'),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)('vehicles'),
     __metadata("design:paramtypes", [vehicles_service_1.VehiclesService])
 ], VehiclesController);
